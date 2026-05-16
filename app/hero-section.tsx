@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { DiaTextReveal } from "@/components/ui/dia-text-reveal";
 
 import HeroSlideshow, {
@@ -59,11 +60,7 @@ export default function HeroSection({ slides }: HeroSectionProps) {
 
       <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <div>
-          <p className="mb-5 text-xs font-bold uppercase tracking-[0.28em] text-[#8A681E] sm:text-sm">
-            Preschool & Kindergarten
-          </p>
-
-          <h1 className="mx-auto max-w-3xl text-balance text-5xl font-bold leading-[0.95] tracking-tight text-[#2B2B2B] sm:text-6xl lg:mx-0 lg:text-7xl">
+          <h1 className="mx-auto max-w-3xl text-balance text-4xl font-bold leading-tight tracking-tight text-[#2B2B2B] sm:text-5xl lg:mx-0 lg:text-6xl">
             <DiaTextReveal
               colors={[
                 "#FFF3C4",
@@ -78,6 +75,15 @@ export default function HeroSection({ slides }: HeroSectionProps) {
               textColor="#2B2B2B"
             />
           </h1>
+
+          <p className="mt-4 text-sm font-semibold uppercase tracking-[0.28em] text-[#8A681E] sm:text-base">
+            <AnimatedShinyText
+              className="mx-0 max-w-none bg-linear-to-r from-transparent via-[#E8B84A] via-50% to-transparent text-[#8A681E]/80"
+              shimmerWidth={140}
+            >
+              Preschool & Kindergarten
+            </AnimatedShinyText>
+          </p>
 
           <p className="mx-auto mt-6 max-w-2xl text-base font-medium leading-8 text-[#3A3A3A]/80 sm:text-lg lg:mx-0">
             Ruang belajar hangat untuk anak bertumbuh mandiri, bereksplorasi

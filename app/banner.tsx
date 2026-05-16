@@ -16,10 +16,10 @@ export default function Banner() {
         </div>
 
         <div className="min-w-0">
-          <p className="text-base font-semibold leading-tight text-[#2B2B2B] sm:text-lg md:text-xl">
+          <p className="text-lg font-bold leading-tight text-[#2B2B2B] sm:text-xl md:text-2xl">
             Global Center Montessori
           </p>
-          <p className="text-base font-semibold leading-tight text-[#6D6255] sm:text-lg md:text-xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#6D6255] sm:text-sm md:text-base">
             Preschool & Kindergarten
           </p>
         </div>

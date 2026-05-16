@@ -153,10 +153,10 @@ function SectionIntro({
 }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#8A681E] sm:text-sm">
+      <p className="text-2xl font-extrabold uppercase tracking-[0.1em] text-[#8A681E] sm:text-3xl">
         {eyebrow}
       </p>
-      <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-[#2B2B2B] sm:text-5xl">
+      <h2 className="mt-4 text-balance text-xl font-bold leading-snug tracking-tight text-[#2B2B2B] sm:text-3xl">
         {title}
       </h2>
       {description ? (
@@ -222,10 +222,10 @@ export default function LandingContent() {
           </div>
 
           <div className="text-center lg:text-left">
-            <p className="text-xs font-bold uppercase tracking-[0.28em] text-[#8A681E] sm:text-sm">
+            <p className="text-2xl font-extrabold uppercase tracking-[0.1em] text-[#8A681E] sm:text-3xl">
               Tentang Kami
             </p>
-            <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight text-[#2B2B2B] sm:text-5xl">
+            <h2 className="mt-4 text-balance text-xl font-bold leading-snug tracking-tight text-[#2B2B2B] sm:text-3xl">
               Prasekolah hangat di Jakarta untuk tumbuh sesuai ritme anak.
             </h2>
             <p className="mt-6 text-left text-base leading-8 text-[#3A3A3A]/78 sm:text-lg lg:text-justify">
@@ -364,10 +364,10 @@ export default function LandingContent() {
 
           <div className="mt-16 grid items-center gap-12 lg:grid-cols-[1fr_0.92fr]">
             <div className="text-center lg:text-left">
-              <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#8A681E]">
+              <p className="text-2xl font-extrabold uppercase tracking-[0.1em] text-[#8A681E] sm:text-3xl">
                 Filosofi
               </p>
-              <h3 className="mt-4 text-3xl font-bold tracking-tight text-[#2B2B2B] sm:text-4xl">
+              <h3 className="mt-4 text-xl font-bold leading-snug tracking-tight text-[#2B2B2B] sm:text-2xl">
                 PENGAJARAN ABADI DALAM MERUBAH DUNIA
               </h3>
               <p className="mt-6 text-left text-base leading-8 text-[#3A3A3A]/78 sm:text-lg lg:text-justify">
@@ -398,10 +398,10 @@ export default function LandingContent() {
           <div className="mt-20 rounded-[2rem] bg-white/72 p-6 shadow-[0_18px_55px_rgba(43,43,43,0.07)] ring-1 ring-black/[0.04] backdrop-blur sm:p-8 lg:p-10">
             <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
               <div className="text-center lg:text-left">
-                <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#8A681E]">
+                <p className="text-2xl font-extrabold uppercase tracking-[0.1em] text-[#8A681E] sm:text-3xl">
                   Kurikulum
                 </p>
-                <h3 className="mt-4 text-3xl font-bold tracking-tight text-[#2B2B2B] sm:text-4xl">
+                <h3 className="mt-4 text-xl font-bold leading-snug tracking-tight text-[#2B2B2B] sm:text-2xl">
                   KURIKULUM KOMPREHENSIF
                 </h3>
                 <p className="mt-6 text-left text-base leading-8 text-[#3A3A3A]/78 lg:text-justify">
@@ -468,12 +468,12 @@ export default function LandingContent() {
 
             <div className="mt-10 grid gap-5 lg:grid-cols-2">
               <blockquote className="rounded-[1.5rem] bg-[#FAF7F0]/92 p-6 text-[#3A3A3A]/80 ring-1 ring-black/[0.04]">
-                <p className="text-lg font-semibold text-[#2B2B2B]">
+                <cite className="not-italic text-xl font-bold tracking-tight text-[#2B2B2B] sm:text-2xl">
+                  Maria Montessori
+                </cite>
+                <p className="mt-3 text-sm font-semibold italic leading-7 text-[#8A681E] sm:text-base">
                   &ldquo;Help me to do it myself&rdquo;
                 </p>
-                <footer className="mt-2 text-sm font-semibold text-[#8A681E]">
-                  Maria Montessori
-                </footer>
                 <p className="mt-4 text-left text-sm leading-7 lg:text-justify">
                   Sepanjang hari, anak-anak diberi ruang untuk mandiri dan
                   materi pembelajaran disiapkan agar mereka dapat melakukannya
@@ -485,14 +485,14 @@ export default function LandingContent() {
               </blockquote>
 
               <blockquote className="rounded-[1.5rem] bg-[#FAF7F0]/92 p-6 text-[#3A3A3A]/80 ring-1 ring-black/[0.04]">
-                <p className="text-lg font-semibold text-[#2B2B2B]">
+                <cite className="not-italic text-xl font-bold tracking-tight text-[#2B2B2B] sm:text-2xl">
+                  Rudolf Steiner
+                </cite>
+                <p className="mt-3 text-sm font-semibold italic leading-7 text-[#8A681E] sm:text-base">
                   &ldquo;The need for imagination, a sense of truth, and a
                   feeling of responsibility - these three forces are the very
                   nerve of education.&rdquo;
                 </p>
-                <footer className="mt-2 text-sm font-semibold text-[#8A681E]">
-                  Rudolf Steiner
-                </footer>
                 <p className="mt-4 text-left text-sm leading-7 lg:text-justify">
                   Prinsip Waldorf diterapkan melalui mendongeng, musik,
                   menggambar, melukis, permainan ritmis, membuat model, serta
@@ -505,10 +505,10 @@ export default function LandingContent() {
 
           <div id="program" className="mt-20">
             <div className="mb-8 flex flex-col gap-3 text-center lg:text-left">
-              <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#8A681E]">
+              <p className="text-2xl font-extrabold uppercase tracking-[0.1em] text-[#8A681E] sm:text-3xl">
                 Program
               </p>
-              <h3 className="text-3xl font-bold tracking-tight text-[#2B2B2B]">
+              <h3 className="text-xl font-bold leading-snug tracking-tight text-[#2B2B2B] sm:text-2xl">
                 Pilihan program yang fleksibel untuk kebutuhan keluarga.
               </h3>
             </div>
