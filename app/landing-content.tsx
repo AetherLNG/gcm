@@ -2,13 +2,13 @@ import Image from "next/image";
 import {
   Baby,
   BookOpen,
-  Clock,
   GraduationCap,
   Heart,
   Palette,
   ShieldCheck,
   Sparkles,
   Sun,
+  type LucideIcon,
   Users,
 } from "lucide-react";
 
@@ -44,7 +44,17 @@ const missions = [
   },
 ];
 
-const classes = [
+type ClassItem = {
+  name: string;
+  age: string;
+  schedule: string;
+  description: string;
+  image: string;
+  Icon: LucideIcon;
+  programDetails?: string[];
+};
+
+const classes: ClassItem[] = [
   {
     name: "Adik Imut",
     age: "1,5 - 3 tahun",
@@ -86,7 +96,7 @@ const classes = [
     age: "3 bulan - 7 tahun",
     schedule: "Pk 07.00 - 17.00",
     description:
-      "Pendampingan harian yang aman, hangat, dan terstruktur untuk mendukung kebutuhan anak dan keluarga sepanjang hari.",
+      "",
     image: imageOne,
     Icon: Heart,
   },
@@ -95,9 +105,16 @@ const classes = [
     age: "2 - 9 tahun",
     schedule: "Senin - Jumat Pk 08.00 - 15.00",
     description:
-      "Program inklusi fullday dengan pendampingan yang memperhatikan kebutuhan, ritme, dan perkembangan setiap anak secara lebih personal.",
+      "Tempat yang dikhususkan untuk menangani anak-anak berkebutuhan khusus, dengan menghadirkan suasana rumah (Home Schooling) dengan memberikan terapi-terapi untuk hambatan tumbuh kembang anak secara full day.",
     image: imageTwo,
     Icon: Users,
+    programDetails: [
+      "Terapi (2 sesi)",
+      "Brain Stimulation",
+      "Toilet Training",
+      "Kemandirian",
+      "Makan Siang",
+    ],
   },
 ];
 
@@ -119,36 +136,13 @@ const curriculumGoals = [
   "Mempraktikkan sifat-sifat karakter yang baik",
 ];
 
-const programs = [
-  {
-    title: "Kelas Pagi",
-    age: "1,5 - 6 tahun",
-    description: "Program kelas reguler dengan rutinitas belajar yang hangat, terarah, dan sesuai usia.",
-  },
-  {
-    title: "Daycare",
-    age: "3 bulan - 7 tahun",
-    description: "Pendampingan harian dari pagi hingga sore dalam lingkungan yang aman dan penuh perhatian.",
-  },
-  {
-    title: "Inklusi Fullday",
-    age: "2 - 9 tahun",
-    description: "Program fullday untuk anak yang membutuhkan pendampingan lebih personal dan konsisten.",
-  },
-  {
-    title: "Activity Class",
-    age: "3 - 6 tahun",
-    description: "Kegiatan seni, musik, gerak kreatif, dan eksplorasi tematik yang memperkaya pengalaman anak.",
-  },
-];
-
 function SectionIntro({
   eyebrow,
   title,
   description,
 }: {
   eyebrow: string;
-  title: string;
+  title?: string;
   description?: string;
 }) {
   return (
@@ -156,9 +150,11 @@ function SectionIntro({
       <p className="text-2xl font-extrabold uppercase tracking-[0.1em] text-[#8A681E] sm:text-3xl">
         {eyebrow}
       </p>
-      <h2 className="mt-4 text-balance text-xl font-bold leading-snug tracking-tight text-[#2B2B2B] sm:text-3xl">
-        {title}
-      </h2>
+      {title ? (
+        <h2 className="mt-4 text-balance text-xl font-bold leading-snug tracking-tight text-[#2B2B2B] sm:text-3xl">
+          {title}
+        </h2>
+      ) : null}
       {description ? (
         <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#3A3A3A]/78 sm:text-lg">
           {description}
@@ -269,11 +265,17 @@ export default function LandingContent() {
         <div className="absolute right-[-10rem] top-16 h-80 w-80 rounded-full bg-[#E8B84A]/14 blur-3xl" />
         <div className="mx-auto max-w-7xl">
           <SectionIntro
-            eyebrow="Visi dan Misi"
+            eyebrow="Visi"
             title="Membentuk anak-anak yang sehat, kreatif, mandiri, ceria dan berkarakter baik dalam lingkungan yang penuh kasih."
           />
 
-          <div className="mt-14 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-14 text-center">
+            <p className="text-2xl font-extrabold uppercase tracking-[0.1em] text-[#8A681E] sm:text-3xl">
+              Misi
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
             {missions.map((mission, index) => (
               <div
                 key={mission.title}
@@ -310,14 +312,14 @@ export default function LandingContent() {
             description="Setiap kelas menjaga keseimbangan antara bermain, eksplorasi, rutinitas, dan pembelajaran yang sesuai usia."
           />
 
-          <BentoGrid className="mt-14 auto-rows-[25rem] grid-cols-1 gap-5 lg:grid-cols-3">
+          <BentoGrid className="mt-14 auto-rows-[minmax(25rem,auto)] grid-cols-1 gap-5 lg:grid-cols-3">
             {classes.map((item) => {
               const Icon = item.Icon;
 
               return (
                 <article
                   key={item.name}
-                  className="group relative overflow-hidden rounded-[2rem] bg-[#FAF7F0] shadow-[0_18px_55px_rgba(43,43,43,0.09)] ring-1 ring-black/[0.04]"
+                  className="group relative flex min-h-[25rem] overflow-hidden rounded-[2rem] bg-[#FAF7F0] shadow-[0_18px_55px_rgba(43,43,43,0.09)] ring-1 ring-black/[0.04]"
                 >
                   <Image
                     src={item.image}
@@ -332,7 +334,7 @@ export default function LandingContent() {
                       {item.age}
                     </span>
                   </div>
-                  <div className="absolute inset-x-0 bottom-0 p-6 text-white">
+                  <div className="relative z-10 mt-auto w-full p-6 text-white">
                     <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#E8B84A]/22 text-[#FFE39A] backdrop-blur">
                       <Icon className="h-5 w-5" />
                     </div>
@@ -343,6 +345,26 @@ export default function LandingContent() {
                     <p className="mt-3 text-sm leading-6 text-white/82">
                       {item.description}
                     </p>
+                    {item.programDetails ? (
+                      <details className="group/details mt-4">
+                        <summary className="inline-flex min-h-9 cursor-pointer list-none items-center justify-center rounded-full bg-[#FFFDF7]/90 px-4 text-xs font-bold uppercase tracking-[0.08em] text-[#8A681E] shadow-sm backdrop-blur transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#DFAF3A] [&::-webkit-details-marker]:hidden">
+                          Lihat Program
+                        </summary>
+                        <div className="mt-4 rounded-2xl bg-[#FFFDF7]/92 p-4 text-left text-[#2B2B2B] shadow-sm backdrop-blur">
+                          <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-[#8A681E]">
+                            Program:
+                          </p>
+                          <ul className="mt-3 grid gap-2 text-sm font-semibold leading-6 text-[#3A3A3A]">
+                            {item.programDetails.map((program) => (
+                              <li key={program} className="flex gap-2">
+                                <ShieldCheck className="mt-1 h-4 w-4 shrink-0 text-[#8A681E]" />
+                                <span>{program}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </details>
+                    ) : null}
                   </div>
                 </article>
               );
@@ -357,12 +379,9 @@ export default function LandingContent() {
       >
         <div className="absolute left-1/2 top-10 h-96 w-96 -translate-x-1/2 rounded-full bg-[#E8B84A]/10 blur-3xl" />
         <div className="mx-auto max-w-7xl">
-          <SectionIntro
-            eyebrow="Akademik"
-            title="Pembelajaran yang hangat, bermakna, dan membangun kemandirian."
-          />
+          <SectionIntro eyebrow="Akademik" />
 
-          <div className="mt-16 grid items-center gap-12 lg:grid-cols-[1fr_0.92fr]">
+          <div className="mt-10 grid items-center gap-10 sm:mt-12 lg:mt-16 lg:grid-cols-[1fr_0.92fr] lg:gap-12">
             <div className="text-center lg:text-left">
               <p className="text-2xl font-extrabold uppercase tracking-[0.1em] text-[#8A681E] sm:text-3xl">
                 Filosofi
@@ -500,45 +519,6 @@ export default function LandingContent() {
                   berkebun dengan fokus pada proses pembelajaran.
                 </p>
               </blockquote>
-            </div>
-          </div>
-
-          <div id="program" className="mt-20">
-            <div className="mb-8 flex flex-col gap-3 text-center lg:text-left">
-              <p className="text-2xl font-extrabold uppercase tracking-[0.1em] text-[#8A681E] sm:text-3xl">
-                Program
-              </p>
-              <h3 className="text-xl font-bold leading-snug tracking-tight text-[#2B2B2B] sm:text-2xl">
-                Pilihan program yang fleksibel untuk kebutuhan keluarga.
-              </h3>
-            </div>
-
-            <div className="grid gap-5 lg:grid-cols-4">
-              {programs.map((program) => (
-                <article
-                  key={program.title}
-                  className="rounded-[1.75rem] bg-[#FFFDF7]/86 p-6 shadow-[0_16px_45px_rgba(43,43,43,0.07)] ring-1 ring-black/[0.04] backdrop-blur transition hover:-translate-y-1"
-                >
-                  <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#E8B84A]/16 text-[#8A681E]">
-                    <Clock className="h-5 w-5" />
-                  </div>
-                  <h4 className="text-xl font-bold text-[#2B2B2B]">
-                    {program.title}
-                  </h4>
-                  <p className="mt-1 text-sm font-semibold text-[#8A681E]">
-                    {program.age}
-                  </p>
-                  <p className="mt-4 min-h-20 text-sm leading-7 text-[#3A3A3A]/74">
-                    {program.description}
-                  </p>
-                  <a
-                    href="#kontak"
-                    className="mt-5 inline-flex text-sm font-bold text-[#8A681E] underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#DFAF3A]"
-                  >
-                    Konsultasi program
-                  </a>
-                </article>
-              ))}
             </div>
           </div>
         </div>

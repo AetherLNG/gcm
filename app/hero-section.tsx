@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
 import { DiaTextReveal } from "@/components/ui/dia-text-reveal";
+import { ShimmerButton } from "@/components/ui/shimmer-button";
 
 import HeroSlideshow, {
   fallbackHeroSlides,
@@ -32,7 +33,7 @@ export default function HeroSection({ slides }: HeroSectionProps) {
   }, [slideCount]);
 
   return (
-    <section className="relative isolate flex min-h-[calc(100dvh-4.5rem)] flex-1 items-center overflow-hidden px-4 py-14 text-center sm:px-6 sm:py-16 lg:px-8 lg:text-left">
+    <section className="relative isolate flex min-h-[calc(100dvh-4.5rem)] flex-1 items-center overflow-hidden rounded-b-[2rem] px-4 py-14 text-center sm:rounded-b-[2.5rem] sm:px-6 sm:py-16 lg:rounded-b-[3rem] lg:px-8 lg:text-left">
       <div className="absolute inset-0 -z-30 overflow-hidden">
         {visibleSlides.map((slide, index) => (
           <Image
@@ -92,18 +93,24 @@ export default function HeroSection({ slides }: HeroSectionProps) {
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row lg:justify-start">
-            <a
-              href="#kontak"
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-[#E8B84A] px-6 text-sm font-semibold text-[#2B2B2B] shadow-[0_12px_30px_rgba(232,184,74,0.22)] transition-colors hover:bg-[#D4A63D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#DFAF3A]"
+            <ShimmerButton
+              asChild
+              background="#E8B84A"
+              shimmerColor="#FFF7D6"
+              shimmerDuration="2.4s"
+              className="min-h-11 px-6 py-0 text-sm font-semibold text-[#2B2B2B] shadow-[0_12px_30px_rgba(232,184,74,0.22)] hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#DFAF3A]"
             >
-              Daftar Kunjungan
-            </a>
-            <a
-              href="#program"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border border-[#E8B84A] bg-transparent px-6 text-sm font-semibold text-[#8A681E] transition-colors hover:bg-[#FFF3C4]/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#DFAF3A]"
+              <a href="#kontak">Daftar Kunjungan</a>
+            </ShimmerButton>
+            <ShimmerButton
+              asChild
+              background="rgba(255, 253, 247, 0.82)"
+              shimmerColor="#E8B84A"
+              shimmerDuration="2.7s"
+              className="min-h-11 border-[#E8B84A]/80 px-6 py-0 text-sm font-semibold text-[#8A681E] shadow-none hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#DFAF3A]"
             >
-              Lihat Program
-            </a>
+              <a href="#classes">Lihat Program</a>
+            </ShimmerButton>
           </div>
 
           <p className="mt-5 text-sm font-medium text-[#6D6255]">
