@@ -1,10 +1,8 @@
 import React, { type ComponentPropsWithoutRef, type CSSProperties } from "react"
-import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
 
 export interface ShimmerButtonProps extends ComponentPropsWithoutRef<"button"> {
-  asChild?: boolean
   shimmerColor?: string
   shimmerSize?: string
   borderRadius?: string
@@ -20,7 +18,6 @@ export const ShimmerButton = React.forwardRef<
 >(
   (
     {
-      asChild = false,
       shimmerColor = "#ffffff",
       shimmerSize = "0.05em",
       shimmerDuration = "3s",
@@ -32,10 +29,8 @@ export const ShimmerButton = React.forwardRef<
     },
     ref
   ) => {
-    const Comp = asChild ? Slot.Root : "button"
-
     return (
-      <Comp
+      <button
         style={
           {
             "--spread": "90deg",
@@ -67,7 +62,7 @@ export const ShimmerButton = React.forwardRef<
             <div className="animate-spin-around absolute -inset-full w-auto [translate:0_0] rotate-0 [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--shimmer-color)_var(--spread),transparent_var(--spread))]" />
           </div>
         </div>
-        <Slot.Slottable>{children}</Slot.Slottable>
+        {children}
 
         {/* Highlight */}
         <div
@@ -93,7 +88,7 @@ export const ShimmerButton = React.forwardRef<
             "absolute inset-(--cut) -z-20 [border-radius:var(--radius)] [background:var(--bg)]"
           )}
         />
-      </Comp>
+      </button>
     )
   }
 )
